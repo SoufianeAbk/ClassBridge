@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBridge.Core", "ClassBridge.Core\ClassBridge.Core.csproj", "{010598EF-1237-4F6D-8447-E2863FDDAC1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBridge.Web", "ClassBridge.Web\ClassBridge.Web.csproj", "{640498C9-6D1E-4B24-B002-AE8B50C51CBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{010598EF-1237-4F6D-8447-E2863FDDAC1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010598EF-1237-4F6D-8447-E2863FDDAC1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010598EF-1237-4F6D-8447-E2863FDDAC1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010598EF-1237-4F6D-8447-E2863FDDAC1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640498C9-6D1E-4B24-B002-AE8B50C51CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640498C9-6D1E-4B24-B002-AE8B50C51CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640498C9-6D1E-4B24-B002-AE8B50C51CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640498C9-6D1E-4B24-B002-AE8B50C51CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A27E7709-5DB1-4E9C-B6ED-93B479A6FC20}
+	EndGlobalSection
+EndGlobal
