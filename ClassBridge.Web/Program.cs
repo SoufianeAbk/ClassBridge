@@ -1,5 +1,5 @@
 using ClassBridge.Core.Interfaces;
-using ClassBridge.Web.Data;
+using ClassBridge.API.Data;
 using ClassBridge.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;

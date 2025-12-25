@@ -1,7 +1,7 @@
 ﻿using ClassBridge.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClassBridge.Web.Data
+namespace ClassBridge.API.Data
 {
     public class ApplicationDbContext : DbContext
     {

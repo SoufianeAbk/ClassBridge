@@ -1,6 +1,6 @@
 ﻿using ClassBridge.Core.Entities;
 using ClassBridge.Core.Interfaces;
-using ClassBridge.Web.Data;
+using ClassBridge.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassBridge.Web.Services

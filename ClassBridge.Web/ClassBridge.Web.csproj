@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\ClassBridge.Core\ClassBridge.Core.csproj" />
+		<ProjectReference Include="..\ClassBridge.API\ClassBridge.API.csproj" />
 	</ItemGroup>
 
 </Project>

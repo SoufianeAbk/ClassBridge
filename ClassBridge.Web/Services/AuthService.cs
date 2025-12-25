@@ -1,6 +1,5 @@
 ﻿using ClassBridge.Core.Entities;
-using ClassBridge.Core.Enums;
-using ClassBridge.Web.Data;
+using ClassBridge.API.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
