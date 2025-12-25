@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassBridge.Core.Enums
+﻿namespace ClassBridge.Core.Enums
 {
-    internal class Subject
+    public enum Subject
     {
+        Wiskunde,           // Mathematics
+        Nederlands,         // Dutch
+        Engels,            // English
+        Frans,             // French
+        Duits,             // German
+        Geschiedenis,      // History
+        Aardrijkskunde,   // Geography
+        Biologie,          // Biology
+        Natuurkunde,       // Physics
+        Economie,          // Economics
+        Informatica,       // Computer Science
+        Lichamelijkeopvoeding, // Physical Education
+        Muziek,            // Music
+        Beeldende_Kunst,   // Visual Arts
+        Maatschappijleer  // Social Studies
     }
 }
