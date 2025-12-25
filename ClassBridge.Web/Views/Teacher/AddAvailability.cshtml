@@ -1,0 +1,57 @@
+﻿@model ClassBridge.Web.ViewModels.AvailabilityViewModel
+@{
+    ViewData["Title"] = "Beschikbaarheid Toevoegen";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Beschikbaarheid Toevoegen</h2>
+
+                    <form asp-action="AddAvailability" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="DayOfWeek" class="form-label">Dag van de Week</label>
+                            <select asp-for="DayOfWeek" class="form-select">
+                                <option value="">-- Selecteer een dag --</option>
+                                <option value="0">Zondag</option>
+                                <option value="1">Maandag</option>
+                                <option value="2">Dinsdag</option>
+                                <option value="3">Woensdag</option>
+                                <option value="4">Donderdag</option>
+                                <option value="5">Vrijdag</option>
+                                <option value="6">Zaterdag</option>
+                            </select>
+                            <span asp-validation-for="DayOfWeek" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="StartTime" class="form-label">Starttijd</label>
+                                <input asp-for="StartTime" class="form-control" type="time" />
+                                <span asp-validation-for="StartTime" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="EndTime" class="form-label">Eindtijd</label>
+                                <input asp-for="EndTime" class="form-control" type="time" />
+                                <span asp-validation-for="EndTime" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Toevoegen</button>
+                            <a asp-action="Profile" class="btn btn-outline-secondary">Annuleren</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,141 @@
+﻿@model ClassBridge.Web.ViewModels.TeacherProfileViewModel
+@{
+    ViewData["Title"] = Model.FullName;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                @if (!string.IsNullOrEmpty(Model.ProfileImageUrl))
+                {
+                    <img src="@Model.ProfileImageUrl" class="card-img-top" alt="@Model.FullName">
+                }
+                else
+                {
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 300px;">
+                        <i class="bi bi-person-circle text-white" style="font-size: 6rem;"></i>
+                    </div>
+                }
+                <div class="card-body">
+                    <h4 class="card-title">@Model.FullName</h4>
+                    <p class="text-muted">@Model.Qualification</p>
+
+                    @if (Model.IsAvailableForMeetings)
+                    {
+                        <span class="badge bg-success">Beschikbaar</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Niet beschikbaar</span>
+                    }
+
+                    <hr>
+
+                    <p class="mb-2">
+                        <i class="bi bi-envelope"></i> @Model.Email
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-telephone"></i> @Model.PhoneNumber
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-briefcase"></i> @Model.YearsOfExperience jaar ervaring
+                    </p>
+                    <p class="mb-2">
+                        <i class="bi bi-currency-euro"></i> €@Model.HourlyRate per uur
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Over mij</h5>
+                    <p class="card-text">@Model.Bio</p>
+                </div>
+            </div>
+
+            @if (Model.Strengths.Any())
+            {
+                <div class="card shadow-sm mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Vakken & Expertise</h5>
+                        <div class="row">
+                            @foreach (var strength in Model.Strengths)
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <strong class="me-2">@strength.Subject</strong>
+                                        <div class="flex-grow-1">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                if (i <= strength.ProficiencyLevel)
+                                                {
+                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="bi bi-star text-muted"></i>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(strength.Description))
+                                    {
+                                        <p class="text-muted small mb-0">@strength.Description</p>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Availabilities.Any())
+            {
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Beschikbaarheid</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Dag</th>
+                                        <th>Tijdslot</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var availability in Model.Availabilities.OrderBy(a => a.DayOfWeek))
+                                    {
+                                        <tr>
+                                            <td>@availability.DayName</td>
+                                            <td>@availability.TimeRange</td>
+                                            <td>
+                                                @if (availability.IsBooked)
+                                                {
+                                                    <span class="badge bg-danger">Geboekt</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-success">Beschikbaar</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="mt-3">
+                <a asp-action="SearchTeachers" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Terug naar overzicht
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

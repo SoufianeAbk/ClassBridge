@@ -1,8 +1,88 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welkom bij ClassBridge";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-3 fw-bold mb-4">Welkom bij ClassBridge</h1>
+    <p class="lead mb-5">Het platform dat leraren en ouders met elkaar verbindt voor betere begeleiding van kinderen</p>
+
+    @if (User.Identity?.IsAuthenticated != true)
+    {
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <div class="card-group">
+                    <div class="card shadow-sm border-primary">
+                        <div class="card-body p-4">
+                            <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
+                            <h3 class="card-title mt-3">Voor Ouders</h3>
+                            <p class="card-text">Vind gekwalificeerde leraren om uw kinderen te helpen met hun studies.</p>
+                            <a asp-controller="Account" asp-action="RegisterParent" class="btn btn-primary">
+                                Registreer als Ouder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm border-success">
+                        <div class="card-body p-4">
+                            <i class="bi bi-mortarboard-fill text-success" style="font-size: 3rem;"></i>
+                            <h3 class="card-title mt-3">Voor Leraren</h3>
+                            <p class="card-text">Deel uw expertise en help kinderen hun potentieel te bereiken.</p>
+                            <a asp-controller="Account" asp-action="RegisterTeacher" class="btn btn-success">
+                                Registreer als Leraar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <h3 class="mb-4">Welkom terug, @User.Identity.Name!</h3>
+                        @if (User.IsInRole("Teacher"))
+                        {
+                            <p class="mb-4">Ga naar uw profiel om uw beschikbaarheid te beheren en contact te leggen met ouders.</p>
+                            <a asp-controller="Teacher" asp-action="Profile" class="btn btn-primary btn-lg">
+                                <i class="bi bi-person"></i> Naar Mijn Profiel
+                            </a>
+                        }
+                        else if (User.IsInRole("Parent"))
+                        {
+                            <p class="mb-4">Beheer uw kinderen en zoek naar beschikbare leraren.</p>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a asp-controller="Parent" asp-action="Profile" class="btn btn-primary btn-lg me-2">
+                                    <i class="bi bi-person"></i> Mijn Profiel
+                                </a>
+                                <a asp-controller="Parent" asp-action="SearchTeachers" class="btn btn-success btn-lg">
+                                    <i class="bi bi-search"></i> Leraren Zoeken
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-md-4 text-center">
+        <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
+        <h4 class="mt-3">Betrouwbaar</h4>
+        <p>Alle leraren zijn geverifieerd en gekwalificeerd</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <i class="bi bi-calendar-check text-success" style="font-size: 3rem;"></i>
+        <h4 class="mt-3">Flexibel</h4>
+        <p>Plan afspraken op tijden die voor u werken</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <i class="bi bi-chat-dots text-info" style="font-size: 3rem;"></i>
+        <h4 class="mt-3">Communicatie</h4>
+        <p>Direct contact tussen leraren en ouders</p>
+    </div>
 </div>

@@ -1,0 +1,69 @@
+﻿@model List<ClassBridge.Web.ViewModels.TeacherProfileViewModel>
+@{
+    ViewData["Title"] = "Leraren Zoeken";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Beschikbare Leraren</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var teacher in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(teacher.ProfileImageUrl))
+                        {
+                            <img src="@teacher.ProfileImageUrl" class="card-img-top" alt="@teacher.FullName" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-person-circle text-white" style="font-size: 4rem;"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@teacher.FullName</h5>
+                            <p class="text-muted mb-2">@teacher.Qualification</p>
+                            <p class="mb-2">
+                                <i class="bi bi-briefcase"></i> @teacher.YearsOfExperience jaar ervaring
+                            </p>
+                            <p class="mb-2">
+                                <i class="bi bi-currency-euro"></i> €@teacher.HourlyRate per uur
+                            </p>
+                            <p class="card-text">@teacher.Bio.Substring(0, Math.Min(100, teacher.Bio.Length))...</p>
+
+                            @if (teacher.Strengths.Any())
+                            {
+                                <div class="mb-2">
+                                    <strong>Vakken:</strong>
+                                    <div class="mt-1">
+                                        @foreach (var strength in teacher.Strengths.Take(3))
+                                        {
+                                            <span class="badge bg-primary me-1">@strength.Subject</span>
+                                        }
+                                        @if (teacher.Strengths.Count > 3)
+                                        {
+                                            <span class="badge bg-secondary">+@(teacher.Strengths.Count - 3) meer</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+
+                            <a asp-action="TeacherDetails" asp-route-id="@teacher.Id" class="btn btn-primary w-100 mt-2">
+                                Bekijk Profiel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <p class="mb-0">Er zijn momenteel geen leraren beschikbaar.</p>
+        </div>
+    }
+</div>
