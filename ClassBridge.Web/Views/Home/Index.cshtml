@@ -1,88 +1,157 @@
 ﻿@{
-    ViewData["Title"] = "Welkom bij ClassBridge";
+    ViewData["Title"] = "ClassBridge - Leraren & Ouders Verbonden";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-3 fw-bold mb-4">Welkom bij ClassBridge</h1>
-    <p class="lead mb-5">Het platform dat leraren en ouders met elkaar verbindt voor betere begeleiding van kinderen</p>
+<div class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span style="color: #e50914;">ClassBridge</span>
+            </h1>
+            <p class="hero-subtitle">
+                Het platform dat leraren en ouders verbindt voor betere begeleiding van kinderen
+            </p>
 
-    @if (User.Identity?.IsAuthenticated != true)
-    {
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-8">
-                <div class="card-group">
-                    <div class="card shadow-sm border-primary">
-                        <div class="card-body p-4">
-                            <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
-                            <h3 class="card-title mt-3">Voor Ouders</h3>
-                            <p class="card-text">Vind gekwalificeerde leraren om uw kinderen te helpen met hun studies.</p>
-                            <a asp-controller="Account" asp-action="RegisterParent" class="btn btn-primary">
-                                Registreer als Ouder
-                            </a>
-                        </div>
-                    </div>
+            @if (User.Identity?.IsAuthenticated != true)
+            {
+                <div class="auth-buttons">
+                    <a asp-controller="Account" asp-action="RegisterParent" class="auth-btn auth-btn-primary">
+                        <i class="bi bi-people-fill"></i> Registreer als Ouder
+                    </a>
+                    <a asp-controller="Account" asp-action="RegisterTeacher" class="auth-btn auth-btn-secondary">
+                        <i class="bi bi-mortarboard-fill"></i> Registreer als Leraar
+                    </a>
+                </div>
 
-                    <div class="card shadow-sm border-success">
-                        <div class="card-body p-4">
-                            <i class="bi bi-mortarboard-fill text-success" style="font-size: 3rem;"></i>
-                            <h3 class="card-title mt-3">Voor Leraren</h3>
-                            <p class="card-text">Deel uw expertise en help kinderen hun potentieel te bereiken.</p>
-                            <a asp-controller="Account" asp-action="RegisterTeacher" class="btn btn-success">
-                                Registreer als Leraar
-                            </a>
-                        </div>
+                <div class="stats-section" style="margin-top: 4rem;">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Leraren</div>
                     </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Ouders</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Vakken</div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="welcome-section">
+                    <h3>Welkom terug! 👋</h3>
+                    <p style="margin-bottom: 0; color: #b3b3b3;">Klaar om verder te gaan?</p>
+                </div>
+
+                <div class="auth-buttons">
+                    @if (User.IsInRole("Teacher"))
+                    {
+                        <a asp-controller="Teacher" asp-action="Profile" class="auth-btn auth-btn-primary">
+                            <i class="bi bi-person"></i> Mijn Profiel
+                        </a>
+                    }
+                    else if (User.IsInRole("Parent"))
+                    {
+                        <a asp-controller="Parent" asp-action="Profile" class="auth-btn auth-btn-primary">
+                            <i class="bi bi-person"></i> Mijn Profiel
+                        </a>
+                        <a asp-controller="Parent" asp-action="SearchTeachers" class="auth-btn auth-btn-secondary">
+                            <i class="bi bi-search"></i> Leraren Zoeken
+                        </a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@if (User.Identity?.IsAuthenticated != true)
+{
+    <div class="features-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Waarom ClassBridge?</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h4>Betrouwbaar & Veilig</h4>
+                    <p>Alle leraren zijn geverifieerd en gekwalificeerd. Uw gegevens zijn volledig beveiligd en privé.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h4>Flexibel Plannen</h4>
+                    <p>Plan afspraken op tijden die voor u werken. Volledig flexibel zonder verplichtingen.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <h4>Direct Contact</h4>
+                    <p>Directe communicatie tussen leraren en ouders voor het beste resultaat en voortgang.</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Klaar om te beginnen?</h2>
+                <p>Sluit u aan bij duizenden leraren en ouders die ClassBridge gebruiken voor betere begeleiding van kinderen.</p>
+                <div class="auth-buttons" style="max-width: 500px; margin: 0 auto;">
+                    <a asp-controller="Account" asp-action="RegisterParent" class="auth-btn auth-btn-primary">
+                        <i class="bi bi-people-fill"></i> Voor Ouders
+                    </a>
+                    <a asp-controller="Account" asp-action="RegisterTeacher" class="auth-btn auth-btn-secondary">
+                        <i class="bi bi-mortarboard-fill"></i> Voor Leraren
+                    </a>
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card shadow-sm">
-                    <div class="card-body p-5">
-                        <h3 class="mb-4">Welkom terug, @User.Identity.Name!</h3>
-                        @if (User.IsInRole("Teacher"))
-                        {
-                            <p class="mb-4">Ga naar uw profiel om uw beschikbaarheid te beheren en contact te leggen met ouders.</p>
-                            <a asp-controller="Teacher" asp-action="Profile" class="btn btn-primary btn-lg">
-                                <i class="bi bi-person"></i> Naar Mijn Profiel
-                            </a>
-                        }
-                        else if (User.IsInRole("Parent"))
-                        {
-                            <p class="mb-4">Beheer uw kinderen en zoek naar beschikbare leraren.</p>
-                            <div class="d-grid gap-2 d-md-block">
-                                <a asp-controller="Parent" asp-action="Profile" class="btn btn-primary btn-lg me-2">
-                                    <i class="bi bi-person"></i> Mijn Profiel
-                                </a>
-                                <a asp-controller="Parent" asp-action="SearchTeachers" class="btn btn-success btn-lg">
-                                    <i class="bi bi-search"></i> Leraren Zoeken
-                                </a>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-</div>
+    </div>
+}
 
-<div class="row mt-5 mb-5">
-    <div class="col-md-4 text-center">
-        <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
-        <h4 class="mt-3">Betrouwbaar</h4>
-        <p>Alle leraren zijn geverifieerd en gekwalificeerd</p>
-    </div>
-    <div class="col-md-4 text-center">
-        <i class="bi bi-calendar-check text-success" style="font-size: 3rem;"></i>
-        <h4 class="mt-3">Flexibel</h4>
-        <p>Plan afspraken op tijden die voor u werken</p>
-    </div>
-    <div class="col-md-4 text-center">
-        <i class="bi bi-chat-dots text-info" style="font-size: 3rem;"></i>
-        <h4 class="mt-3">Communicatie</h4>
-        <p>Direct contact tussen leraren en ouders</p>
-    </div>
-</div>
+<style>
+    /* Overrides for specific styling */
+    .features-section {
+        border-top: 1px solid #242424;
+    }
+
+    .feature-card:nth-child(1) .feature-icon {
+        color: #25b93e;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+        color: #e50914;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+        color: #f4a800;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section
+
+    {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    }
+</style>

@@ -1,0 +1,702 @@
+/* ============================================
+   CLASSBRIDGE - NETFLIX-INSPIRED DESIGN
+   ============================================ */
+
+:root {
+    /* Dark Theme Colors */
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #242424;
+    /* Accent Colors */
+    --accent-primary: #e50914; /* Netflix Red */
+    --accent-secondary: #564d4d; /* Dark Gray */
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #808080;
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    line-height: 1.6;
+    margin-bottom: 60px;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    a:hover {
+        color: #f40612;
+    }
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    border-bottom: none;
+    box-shadow: none;
+    padding: 1.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-primary) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+    .navbar-brand i {
+        font-size: 2rem;
+    }
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.95rem;
+}
+
+    .nav-link:hover {
+        color: var(--text-primary) !important;
+    }
+
+    .nav-link.active {
+        color: var(--accent-primary) !important;
+    }
+
+.dropdown-menu {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--bg-tertiary) !important;
+    box-shadow: var(--shadow-lg);
+}
+
+.dropdown-item {
+    color: var(--text-secondary) !important;
+    transition: all 0.2s ease;
+}
+
+    .dropdown-item:hover {
+        background: var(--bg-tertiary) !important;
+        color: var(--text-primary) !important;
+    }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.35rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+    .btn-primary:hover {
+        background: #f40612;
+        color: white;
+    }
+
+.btn-success {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+    .btn-success:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+.btn-outline-primary {
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
+    background: transparent;
+}
+
+    .btn-outline-primary:hover {
+        background: var(--accent-primary);
+        color: white;
+    }
+
+.btn-outline-secondary {
+    border: 2px solid var(--text-secondary);
+    color: var(--text-secondary);
+    background: transparent;
+}
+
+    .btn-outline-secondary:hover {
+        background: var(--text-secondary);
+        color: var(--bg-primary);
+    }
+
+.btn-lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+    .card:hover {
+        background: var(--bg-tertiary);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
+    }
+
+.card-header {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: none;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.35rem;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.bg-primary {
+    background: var(--accent-primary) !important;
+}
+
+.bg-success {
+    background: var(--text-secondary) !important;
+}
+
+.bg-secondary {
+    background: var(--bg-tertiary) !important;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+.form-control, .form-select {
+    background: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 0.35rem;
+    transition: all 0.2s ease;
+}
+
+    .form-control:focus, .form-select:focus {
+        background: var(--bg-secondary);
+        border-color: var(--accent-primary);
+        color: var(--text-primary);
+        box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+    }
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+    border: none;
+    border-radius: 0.35rem;
+    padding: 1rem 1.5rem;
+    animation: slideDown 0.3s ease;
+    border-left: 4px solid var(--accent-primary);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background: rgba(37, 185, 62, 0.15);
+    color: #25b93e;
+}
+
+.alert-danger {
+    background: rgba(229, 9, 20, 0.15);
+    color: #e50914;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2.5rem 0;
+    margin-top: auto;
+    border-top: 1px solid var(--bg-tertiary);
+    font-size: 0.9rem;
+}
+
+    footer p {
+        color: var(--text-secondary);
+        margin: 0;
+    }
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(15, 15, 15, 0.9) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></pattern></defs><rect width="1200" height="600" fill="rgba(0,0,0,0.5)"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+    background-attachment: fixed;
+    color: var(--text-primary);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.auth-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.auth-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.35rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 50px;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+}
+
+.auth-btn-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+    .auth-btn-primary:hover {
+        background: #f40612;
+        transform: scale(1.05);
+    }
+
+.auth-btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+    .auth-btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+
+.features-section {
+    background: var(--bg-primary);
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--bg-tertiary);
+}
+
+    .feature-card:hover {
+        background: var(--bg-tertiary);
+        border-color: var(--accent-primary);
+        transform: translateY(-4px);
+    }
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+}
+
+.feature-card h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.stat-item {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    border: 1px solid var(--bg-tertiary);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    padding: 3rem;
+    border-radius: 0.5rem;
+    margin: 3rem 0;
+    border: 1px solid var(--bg-tertiary);
+    text-align: center;
+}
+
+    .cta-section h2 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+    }
+
+/* ============================================
+   WELCOME SECTION
+   ============================================ */
+
+.welcome-section {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    border: 1px solid var(--bg-tertiary);
+}
+
+    .welcome-section h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+    }
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.pt-5 {
+    padding-top: 3rem;
+}
+
+.pb-5 {
+    padding-bottom: 3rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.d-grid {
+    display: grid;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .auth-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 5px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+    }
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.btn:focus,
+.form-control:focus,
+.nav-link:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+::selection {
+    background: var(--accent-primary);
+    color: white;
+}
