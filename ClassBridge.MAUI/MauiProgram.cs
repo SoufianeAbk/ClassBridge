@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ClassBridge.MAUI.Services;
+using Microsoft.Extensions.Logging;
 
 namespace ClassBridge.MAUI
 {
@@ -15,8 +16,11 @@ namespace ClassBridge.MAUI
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            
+            builder.Services.AddSingleton<ApiService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
