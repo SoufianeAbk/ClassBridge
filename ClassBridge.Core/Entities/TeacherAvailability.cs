@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassBridge.Core.Entities
+﻿namespace ClassBridge.Core.Entities
 {
-    internal class TeacherAvailability
+    public class TeacherAvailability
     {
+        public int Id { get; set; }
+        public int TeacherId { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
+        public bool IsRecurring { get; set; } = true; // Wekelijks terugkerend
+        public DateTime? SpecificDate { get; set; } // Voor eenmalige beschikbaarheid
+        public bool IsBooked { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        // Navigation properties
+        public Teacher Teacher { get; set; } = null!;
     }
 }
